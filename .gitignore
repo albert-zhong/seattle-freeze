@@ -1,1 +1,3 @@
-seattle-freeze/keys_and_tokens.txt
+seattle-freeze/codes.py
+.vscode/
+seattle-freeze/__pycache__/
