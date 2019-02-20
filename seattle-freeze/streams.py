@@ -7,19 +7,25 @@ import csv
 import codes
 import locations
 
-class csv_listener(StreamListener):
+class listener(StreamListener):
+
+    def __init__(self, path, api=None):
+        super().__init__(api=None)
+        self.path = path
+        self.counter = 0
 
     def on_status(self, status):
-        with open("/home/albert/workspace/seattle-freeze/data/seattle.csv", "a") as f:
+        with open(self.path, "a") as f:
             writer = csv.writer(f)
             sanitized_text = ignore_non_ascii(status.text)
             blob = TextBlob(sanitized_text)
             writer.writerow([status.author.screen_name, status.created_at, sanitized_text, blob.polarity, blob.subjectivity])
-            print("Row added")
+            self.counter += 1
+            print("row " + str(self.counter) + " added")
 
     def on_error(self, status):
         print(status)
-        return False
+        return False # kill the stream
 
     def on_timeout(self):
         print (sys.stderr, 'Timeout...')
@@ -28,7 +34,8 @@ class csv_listener(StreamListener):
 def ignore_non_ascii(text):
     return str(text.encode('utf-8').decode('ascii', 'ignore'))
 
-def write_to_csv(location, path):
+def create_stream(location, path):
+
     # Writing csv titles if csv file is empty
     if os.stat(path).st_size == 0:
         with open(path, 'w') as f:
@@ -39,5 +46,7 @@ def write_to_csv(location, path):
     auth = OAuthHandler(codes.ckey, codes.csecret)
     auth.set_access_token(codes.atoken, codes.asecret)
 
-    twitterStream = Stream(auth, csv_listener())
+
+    csv_listener = listener(path)
+    twitterStream = Stream(auth, csv_listener)
     twitterStream.filter(locations=location)

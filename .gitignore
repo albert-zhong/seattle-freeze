@@ -1,4 +1,5 @@
 seattle-freeze/codes.py
 .vscode/
 seattle-freeze/__pycache__/
+seattle-freeze/script.py
 data/seattle.csv
