@@ -7,12 +7,15 @@ import csv
 import codes
 import locations
 
+
 class listener(StreamListener):
+
 
     def __init__(self, path, api=None):
         super().__init__(api=None)
         self.path = path
         self.counter = 0
+
 
     def on_status(self, status):
         with open(self.path, "a") as f:
@@ -23,16 +26,20 @@ class listener(StreamListener):
             self.counter += 1
             print("row " + str(self.counter) + " added")
 
+
     def on_error(self, status):
         print(status)
         return False # kill the stream
+
 
     def on_timeout(self):
         print (sys.stderr, 'Timeout...')
         return False # kill the stream
 
+
 def ignore_non_ascii(text):
     return str(text.encode('utf-8').decode('ascii', 'ignore'))
+
 
 def create_stream(location, path):
 
