@@ -7,8 +7,8 @@ Make sure to create a codes.py file in the seattle-freeze/ directory. This will 
 
 seattle-freeze/seattle-freeze/codes.py
 ```python
-ckey = "blahblahblahblahblahblahb"
-csecret = "blahblahblahblahblahblahblahblahblahblahblahblahbl"
-atoken = "blahblahblahblahblah-blahblahblahblahblah"
-asecret = "blahblahblahblahblahblahblahblahblahblbhlalb"
+consumer_key = "blahblahblahblahblahblahb"
+consumer_secret = "blahblahblahblahblahblahblahblahblahblahblahblahbl"
+access_token = "blahblahblahblahblah-blahblahblahblahblah"
+access_secret = "blahblahblahblahblahblahblahblahblahblbhlalb"
 ```
