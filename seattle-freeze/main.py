@@ -4,7 +4,7 @@ import locations
 
 
 def main():
-    geo_streaming.create_stream(locations.HOUSTON)
+    analysis.get_word_frequency(locations.HOUSTON)
 
 
 if __name__ == "__main__":

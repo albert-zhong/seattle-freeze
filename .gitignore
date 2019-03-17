@@ -4,5 +4,6 @@ seattle-freeze/__pycache__/
 seattle-freeze/script.py
 data/seattle.csv
 data/houston.csv
+data/houston_words.csv
 .idea/
 __pycache__/

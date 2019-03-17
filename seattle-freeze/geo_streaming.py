@@ -43,7 +43,7 @@ def ignore_non_ascii(text):
 def create_stream(location):
 
     # Create path
-    path = get_path(location)
+    path = get_path(location[1])  # location[0] are coordinates, location[1] is location name string
 
     # Create CSV file if it doesn't exist already
     if os.path.isfile(path) is False:
@@ -62,9 +62,9 @@ def create_stream(location):
     my_stream.filter(locations=location[0])  # location[0] are coordinates, location[1] is location name string
 
 
-def get_path(location):  # Creates path for CSV file based on location
+def get_path(name):  # Creates path for CSV file based on location
     here = os.path.dirname(os.path.realpath(__file__))
-    file_name = location[1] + ".csv"
+    file_name = name + ".csv"
     data_folder_path = "data"
     file_path = os.path.join(here, os.pardir, data_folder_path, file_name)
     return file_path
